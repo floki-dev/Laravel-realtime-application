@@ -51,11 +51,11 @@
                 usersElement.appendChild(element)
             })
             .listen('UserUpdated', (e) => {
-                const element = document.getElementById('e.user.id')
+                const element = document.getElementById(e.user.id)
                 element.innerText = e.user.name;
             })
             .listen('UserDeleted', (e) => {
-                const element = document.getElementById('e.user.id')
+                const element = document.getElementById(e.user.id)
                 element.parentNode.removeChild(element)
             })
     </script>

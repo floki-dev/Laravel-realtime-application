@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Events\UserCreated;
 use App\Events\UserDeleted;
-use App\Events\UsersIndex;
 use App\Events\UserUpdated;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -83,7 +82,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $dispatchesEvents = [
-        'index' => UsersIndex::class,
         'created' => UserCreated::class,
         'updated' => UserUpdated::class,
         'deleted' => UserDeleted::class,
