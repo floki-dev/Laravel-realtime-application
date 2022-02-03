@@ -26,6 +26,8 @@
 
                     <div class="card-body">
                         <div class="text-center">
+                            <p id="time"></p>
+                            <hr>
                             <img id="circle" class="" src="{{ asset('img/circle.png') }}" height="250"
                                  width="250" alt="circle">
 
@@ -58,11 +60,13 @@
 
 @push('scripts')
     <script>
+        const timeElement = document.getElementById('time');
         const circleElement = document.getElementById('circle');
-        const timerElement = document.getElementById('timer');
-        const winnerElement = document.getElementById('winner');
-        const betElement = document.getElementById('bet');
-        const resultElement = document.getElementById('result');
+        const timerElement = document.getElementById('timer'); // таймер 15, 14, 13 и т.д.
+        const winnerElement = document.getElementById('winner'); // номер правильной цифры
+        const betElement = document.getElementById('bet'); // выбранное число
+        const resultElement = document.getElementById('result'); // выиграли / проиграли текст
+
         Echo.channel('game')
             .listen('RemainingTimeChanged', (e) => {
                 timerElement.innerText = e.time;
@@ -78,7 +82,7 @@
                 winnerElement.innerText = winner;
                 winnerElement.classList.remove('d-none');
                 let bet = betElement[betElement.selectedIndex].innerText;
-                if (bet === winner) {
+                if (+bet === winner) {
                     resultElement.innerText = 'You WIN';
                     resultElement.classList.add('text-success');
                 } else {
@@ -86,5 +90,7 @@
                     resultElement.classList.add('text-danger');
                 }
             })
+
+        setInterval(() => timeElement.innerText = new Date().toLocaleTimeString(), 1000);
     </script>
 @endpush

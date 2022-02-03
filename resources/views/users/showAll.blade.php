@@ -42,7 +42,6 @@
             .channel('users')
             .listen('UserCreated', (e) => {
                 const usersElement = document.getElementById('users')
-
                 let element = document.createElement('li')
 
                 element.setAttribute('id', e.user.id)
