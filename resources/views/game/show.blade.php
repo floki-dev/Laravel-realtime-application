@@ -28,7 +28,7 @@
                         <div class="text-center">
                             <p id="time"></p>
                             <hr>
-                            <img id="circle" class="" src="{{ asset('img/circle.png') }}" height="250"
+                            <img id="circle" class="refresh" src="{{ asset('img/circle.png') }}" height="250"
                                  width="250" alt="circle">
 
                             <p id="winner" class="display-1 d-none text-primary"></p>

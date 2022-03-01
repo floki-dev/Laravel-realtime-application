@@ -47,7 +47,7 @@ class GameExecutor extends Command
             $this->time--;
             sleep(1);
 
-            if ($this->time === 0) {
+            if ($this->time === 0) { // if 0
                 $this->time = 'Waiting to start';
                 broadcast(new RemainingTimeChanged($this->time));
 
